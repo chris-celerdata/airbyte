@@ -42,7 +42,7 @@ class StarRocksDirectLoader(
     private val mapper = ObjectMapper()
     private val tableName = stream.mappedDescriptor.name
 
-    private val maxBatchBytes = 100L * 1024 * 1024  // 100 MB per CDK checkpoint batch
+    private val maxBatchBytes = 50L * 1024 * 1024  // 50 MB per batch - network is bottleneck, not StarRocks
     private var currentBytes = 0L
     private val rows = mutableListOf<String>()
 
